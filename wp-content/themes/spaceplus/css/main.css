@@ -12415,6 +12415,6 @@ li .sub-nav li a {
     position: relative;
     right: 13%;
 }
-.language a{
+.language a, .language span{
     color: #fff;
 }

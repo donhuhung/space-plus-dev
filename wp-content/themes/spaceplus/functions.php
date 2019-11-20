@@ -442,7 +442,7 @@ function clean_custom_menu($theme_location) {
         foreach ($menu_items as $menu_item) {
             $link = $menu_item->url;
             $title = $menu_item->title;  
-            $arrParent = array(37);
+            $arrParent = array(52);
             if ($link_curr == $link) {
                 $active = 'active';
             } else {
@@ -486,12 +486,17 @@ function clean_menu_child($parent_id, $theme_location){
         $active = '';
         $link_curr = get_permalink($post->ID);
         $count = 0;
-        $submenu = false;
-
+        $submenu = false;                
         foreach ($menu_items as $menu_item) {
             $link = $menu_item->url;
             $title = $menu_item->title;  
-            $arrParent = array(37);
+            $arrParent = array(46);
+            $classParent = '';
+            $dataTrigger = '';
+            if (in_array($menu_item->ID, $arrParent)) {
+                $classParent = 'has-children';
+                $dataTrigger = 'data-trigger="'.$menu_item->ID.'"';
+            }
             if ($link_curr == $link) {
                 $active = 'active';
             } else {
@@ -505,17 +510,15 @@ function clean_menu_child($parent_id, $theme_location){
                     $menu_list .= '<ul class="text-menu first-level '.$parent_id.'">' . "\n";
                     $menu_list .= '<li><div class="back visible-xs visible-sm"><div class="label">Back</div></div></li>' . "\n";
                 }
-                $menu_list .= '<li class="' . $active . '"><div class="has-children">' . "\n";
-                $menu_list .= '<a class="sub-link first-tier" href="'.$link.'" data-trigger="'.$menu_item->ID.'">' . $title . '</a>' . "\n";
-                $menu_list .= '</li>' . "\n";
+                $menu_list .= '<li><div class="'.$classParent.'">' . "\n";
+                $menu_list .= '<a class="sub-link first-tier" href="'.$link.'" '.$dataTrigger.'>' . $title . '</a>' . "\n";
+                $menu_list .= '</div></li>' . "\n";     
 
 
-                if ($menu_items[$count + 1]->menu_item_parent != $parent_id && $submenu) {
+                if ($menu_item->menu_item_parent != $parent_id && $submenu) {
                     $menu_list .= '</ul>' . "\n";
                     $submenu = false;
                 }
-
-                $count++;
             }
         }
     } else {
@@ -1642,6 +1645,148 @@ function create_project_taxonomies() {
 
 
     register_taxonomy('tag2', 'project', $args);
+}
+
+
+/**
+
+ * Register a custom post type called "sergice".
+
+ *
+
+ * @see get_post_type_labels() for label keys.
+
+ */
+function wpdocs_codex_service_init() {
+
+    $labels = array(
+        'name' => _x('Services', 'Post type general name', 'textdomain'),
+        'singular_name' => _x('Service', 'Post type singular name', 'textdomain'),
+        'menu_name' => _x('Services', 'Admin Menu text', 'textdomain'),
+        'name_admin_bar' => _x('Service', 'Add New on Toolbar', 'textdomain'),
+        'add_new' => __('Add New', 'textdomain'),
+        'add_new_item' => __('Add New Service', 'textdomain'),
+        'new_item' => __('New Service', 'textdomain'),
+        'edit_item' => __('Edit Service', 'textdomain'),
+        'view_item' => __('View Service', 'textdomain'),
+        'all_items' => __('All Service', 'textdomain'),
+        'search_items' => __('Search Services', 'textdomain'),
+        'parent_item_colon' => __('Parent Services:', 'textdomain'),
+        'not_found' => __('No articles found.', 'textdomain'),
+        'not_found_in_trash' => __('No articles found in Trash.', 'textdomain'),
+        'featured_image' => _x('Article Featured Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'textdomain'),
+        'set_featured_image' => _x('Set featured image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'textdomain'),
+        'remove_featured_image' => _x('Remove featured image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'textdomain'),
+        'use_featured_image' => _x('Use as featured image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'textdomain'),
+        'archives' => _x('Article archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'textdomain'),
+        'insert_into_item' => _x('Insert into article', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'textdomain'),
+        'uploaded_to_this_item' => _x('Uploaded to this article', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'textdomain'),
+        'filter_items_list' => _x('Filter articles list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'textdomain'),
+        'items_list_navigation' => _x('Articles list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'textdomain'),
+        'items_list' => _x('Articles list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'textdomain'),
+    );
+
+
+
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'dich-vu'),
+        'capability_type' => 'post',
+        'has_archive' => true,
+        'hierarchical' => false,
+        'menu_position' => null,
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+    );
+
+
+
+    register_post_type('service', $args);
+}
+
+add_action('init', 'wpdocs_codex_service_init');
+
+// hook into the init action and call create_article_taxonomies when it fires
+
+add_action('init', 'create_service_taxonomies', 0);
+
+// create two taxonomies, categories and tags for the post type "article"
+
+function create_service_taxonomies() {
+
+    // Add new taxonomy, make it hierarchical (like categories)
+
+    $labels = array(
+        'name' => _x('Categories Services', 'taxonomy general name'),
+        'singular_name' => _x('Category Service', 'taxonomy singular name'),
+        'search_items' => __('Search Categories'),
+        'all_items' => __('All Categories'),
+        'parent_item' => __('Parent Category'),
+        'parent_item_colon' => __('Parent Category:'),
+        'edit_item' => __('Edit Category'),
+        'update_item' => __('Update Category'),
+        'add_new_item' => __('Add New Category'),
+        'new_item_name' => __('New Category Name'),
+        'menu_name' => __('Categories Services'),
+    );
+
+
+
+    $args = array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'danh-muc-dich-vu'),
+    );
+
+
+
+    register_taxonomy('danh-muc-dich-vu', array('service'), $args);
+
+
+
+    // Add new taxonomy, NOT hierarchical (like tags)
+
+    $labels = array(
+        'name' => _x('Tags', 'taxonomy general name'),
+        'singular_name' => _x('Tag', 'taxonomy singular name'),
+        'search_items' => __('Search Tags'),
+        'popular_items' => __('Popular Tags'),
+        'all_items' => __('All Tags'),
+        'parent_item' => null,
+        'parent_item_colon' => null,
+        'edit_item' => __('Edit Tag'),
+        'update_item' => __('Update Tag'),
+        'add_new_item' => __('Add New Tag'),
+        'new_item_name' => __('New Tag Name'),
+        'separate_items_with_commas' => __('Separate tags with commas'),
+        'add_or_remove_items' => __('Add or remove tags'),
+        'choose_from_most_used' => __('Choose from the most used tags'),
+        'not_found' => __('No tags found.'),
+        'menu_name' => __('Tags'),
+    );
+
+
+
+    $args = array(
+        'hierarchical' => false,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'update_count_callback' => '_update_post_term_count',
+        'query_var' => true,
+        'rewrite' => array('slug' => 'tag2'),
+    );
+
+
+
+    register_taxonomy('tag2', 'service', $args);
 }
 
 
