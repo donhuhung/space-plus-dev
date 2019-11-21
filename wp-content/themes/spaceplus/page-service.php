@@ -29,34 +29,35 @@ $banners = get_posts($args);
             <div id="bannerCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
-                    <?php for($i=0; $i<count($banners); $i++){?>
-                        <li data-target="#bannerCarousel" data-slide-to="<?php echo $i;?>" class="<?php echo ($i==0)?'active':''?>"></li>
-                    <?php }?>                    
+                    <?php for ($i = 0; $i < count($banners); $i++) { ?>
+                        <li data-target="#bannerCarousel" data-slide-to="<?php echo $i; ?>" class="<?php echo ($i == 0) ? 'active' : '' ?>"></li>
+                    <?php } ?>                    
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox"> 
-                    <?php foreach($banners as $index=>$banner){
+                    <?php
+                    foreach ($banners as $index => $banner) {
                         $link_detail = get_post_meta($banner->ID, 'link', true);
                         ?>
-                        <div class="carousel-item <?php echo $index ==0?'active':''?>">
+                        <div class="carousel-item <?php echo $index == 0 ? 'active' : '' ?>">
                             <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($banner->ID)); ?>" alt="<?php echo $banner->post_title; ?>">
                             <div class="carousel-text">
                                 <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="">
                                 <div class="carousel-content">
                                     <a class="title" href="<?php echo $link_detail ?>">                                    
-                                        <?php echo $banner->post_title; ?>
+    <?php echo $banner->post_title; ?>
                                     </a>
                                     <div class="content-box scrollbar-rail">
                                         <p>
-                                            <?php echo $banner->post_content; ?>
+    <?php echo $banner->post_content; ?>
                                         </p>
                                     </div>  
                                     <a href="<?php echo $link_detail ?>" class="read-more">Read more <i class='fa fa-angle-double-right'></i></a>
                                 </div>                                    
                             </div>
                         </div>
-                    <?php }?>
+<?php } ?>
                 </div>     
 
                 <!-- Left and right controls -->
