@@ -16,6 +16,7 @@
  * @since Twenty Sixteen 1.0
 
  */
+
 $post_id = get_the_ID();
 $post = get_post($post_id);
 ?>
@@ -43,7 +44,7 @@ $post = get_post($post_id);
         <script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/modernizr.min.js'></script>
         <script>
             //if (/Android.+mobile|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false) {
-            document.documentElement.className += " preload";
+            document.documentElement.className = " preload";
             //}
         </script>
     </head>

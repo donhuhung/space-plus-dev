@@ -1,20 +1,24 @@
 @charset "UTF-8";
-.aos-transparent {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
+@font-face {
+    font-family: RobotoMedium;
+    src: url(../fonts/Roboto-Medium.ttf); 
 }
-
-.aos-not-transparent {
-    opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"
-}
-
-
-/*!
-Animate.css - http://daneden.me/animate
-Licensed under the MIT license - http://opensource.org/licenses/MIT
-Copyright (c) 2015 Daniel Eden
-*/
+@font-face {
+    font-family: RobotoRegular;
+    src: url(../fonts/Roboto-Regular.ttf); 
+} 
+@font-face {
+    font-family: RobotoBold;
+    src: url(../fonts/Roboto-Bold.ttf); 
+}  
+@font-face {
+    font-family: RobotoLight;
+    src: url(../fonts/Roboto-Light.ttf); 
+}  
+@font-face {
+    font-family: RobotoItalic;
+    src: url(../fonts/Roboto-Italic.ttf); 
+} 
 
 .animated {
     -webkit-animation-duration: 1s;
@@ -1325,7 +1329,7 @@ body {
     -webkit-backface-visibility: hidden;
     font-smooth: always;
     -webkit-font-smoothing: antialiased;
-    font-family: Graphik, sans-serif;
+    font-family: 'RobotoRegular', sans-serif;
     font-size: 14px;
     font-weight: 300;
     padding-top: 0;
@@ -1532,15 +1536,16 @@ ul {
     font-weight: 400;
     letter-spacing: 0;
     line-height: 1.5em;
-    font-family: Graphik, serif
+    font-family: 'RobotoRegular', sans-serif;
 }
 
 .heading2 {
-    font-family: Graphik;
+    font-family: 'RobotoRegular', sans-serif;
     font-size: 27px;
     line-height: 1em;
     margin-bottom: .7em;
-    text-align: left
+    text-align: left;
+    text-transform: uppercase;
 }
 
 .heading3 {
@@ -2289,7 +2294,8 @@ textarea:focus {
     height: 34px;
     font-weight: 300;
     color: #333;
-    width: 100%
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 html.browser-ie .form-control,
@@ -3535,11 +3541,12 @@ html.browser-lt-edge .component-call-to-action.-image-rollover .overlay {
     padding-left: 10%;
     margin-top: 0;
     margin-bottom: 0;
-    font-family: Graphik;
+    font-family: 'RobotoRegular',sans-serif;
     font-size: 27px;
     line-height: 1em;
     margin-bottom: .7em;
-    text-align: left
+    text-align: left;
+    text-transform: uppercase;
 }
 
 .component-coloured-text.lined .buttons,
@@ -7099,7 +7106,7 @@ li .sub-nav li a {
     padding: 0;
     margin: 0;
     text-transform: uppercase;
-    font-family: Graphik;
+    font-family: 'RobotoRegular',sans-serif;
     font-size: 1.1em;
     margin-left: 1em;
     padding-left: 1em;
@@ -8704,7 +8711,6 @@ li .sub-nav li a {
     width: 100%;
     height: auto;
     background: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .75));
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#00000000", endColorstr="#bf000000", GradientType=0)
 }
 
 .captions-full ul li {
@@ -8724,12 +8730,11 @@ li .sub-nav li a {
 
 .captions-full ul li .seo-title,
 .captions-full ul li .subtitle span {
-    font-family: Graphik;
+    font-family: 'RobotoRegular',sans-serif;
     text-transform: uppercase;
     line-height: 1.5em;
     font-size: 12px;
     letter-spacing: 1pt;
-    font-weight: 600;
     -ms-user-select: none;
     user-select: none;
     -moz-user-select: none;
@@ -8777,7 +8782,7 @@ li .sub-nav li a {
 
 .captions-full ul li h4,
 .captions-full ul li p {
-    font-family: Graphik;
+    font-family: 'RobotoRegular',sans-serif;
     -ms-user-select: none;
     user-select: none;
     -moz-user-select: none;
@@ -10639,7 +10644,7 @@ li .sub-nav li a {
     }
     .component-form.-contact_form_standard,
     .mm-overlay .wrap.-contact_form_standard {
-        padding: 12% 20% 12% 1%
+        padding: 5% 20% 5% 40%;
     }
     .component-form.-contact_form_standard .content p,
     .mm-overlay .wrap.-contact_form_standard .content p {
@@ -11599,7 +11604,7 @@ li .sub-nav li a {
         padding: 5%!important
     }
     .captions-full ul li h4 {
-        font-size: 60px
+        font-size: 40px
     }
     .captions-full ul li p {
         font-size: 15px
@@ -12413,8 +12418,39 @@ li .sub-nav li a {
 .language{
     float: right;
     position: relative;
-    right: 13%;
+    right: 15%;
 }
 .language a, .language span{
     color: #fff;
+}
+.menu-wrapper ul li a.active, .submenu .inner ul li a.active{
+    color:#a3824c !important;
+}
+.menu-wrapper ul li a:hover, .submenu .inner ul li a:hover{
+    color:#a3824c !important;
+}
+.articles .row{
+    display: flex !important;
+}
+.component-coloured-text.articles .col-md-4{
+    padding-right: 0 !important;
+}
+.d-flex{
+    display: flex;
+    justify-content: space-between;
+}
+.articles .title{
+    text-align: center !important;
+    font-size: 18px !important;
+    margin-bottom: 15px !important;
+}
+.articles .content p{
+    color:#000;
+    font-family: 'RobotoRegular',sans-serif !important;        
+}
+
+.articles .content span{
+    color:#000;
+    font-family: 'RobotoRegular',sans-serif;    
+    font-size: 13px;    
 }

@@ -1786,7 +1786,7 @@ function create_service_taxonomies() {
 
 
 
-    register_taxonomy('tag2', 'service', $args);
+    register_taxonomy('tag-service', 'service', $args);
 }
 
 
