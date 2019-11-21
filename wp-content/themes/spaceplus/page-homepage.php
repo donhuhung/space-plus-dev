@@ -52,8 +52,12 @@ $services = get_posts($args);
                                     <h1 class="seo-title"><?php echo $tags[0]->name ;?></h1></div>
                                 <h4><?php echo $service->post_title; ?></h4>
                                 <p><?php echo $service->post_content; ?></p>
-                                <button class="loadpage in">
+                                <button class="loadpage">
                                     <span>Xem thêm</span>
+                                    <div class="left"></div>
+                                    <div class="top"></div>
+                                    <div class="right"></div>
+                                    <div class="bottom"></div>
                                 </button>
                             </div>
                         </div>

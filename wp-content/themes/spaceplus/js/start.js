@@ -19526,14 +19526,6 @@ if (!Modernizr.touch && (touch || navigator.maxTouchPoints && navigator.maxTouch
                                 if (a(".slider-nav").length && (a(".nav-container").hasClass("black") && a(".nav-container").removeClass("black"), a(".slider-nav ul li").each(function(b) {
                                         var c = a(this),
                                             d = c.find(".inner").attr("data-link");
-                                        if (a.pnp.currentTarget.indexOf(d) > -1 && "http://mm.test" !== d && "http://minaleandmannnew.pnpd.co.uk" !== d && "https://minaleandmannnew.pnpd.co.uk" !== d) {
-                                            var e = a(".slider-nav>.slider-wrapper>.slides"),
-                                                f = e.data("flickity");
-                                            f.select(b, !1, !0);
-                                            var g = a(".slider-nav .captions-full ul"),
-                                                h = g.data("flickity");
-                                            h.select(b, !1, !0)
-                                        }
                                     })), window.scenes.length > 0) {
                                     for (var b = 0; b < window.scenes.length; b++) window.scenes[b].destroy(!0), window.scenes[b] = null;
                                     window.controller.destroy(!0), window.controller = null

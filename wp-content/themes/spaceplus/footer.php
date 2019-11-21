@@ -79,3 +79,4 @@
     <i class="ion-ios-close-empty"></i>
 </div>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/start.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/start.php.js"></script>
