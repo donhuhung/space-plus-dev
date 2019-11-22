@@ -1,15 +1,16 @@
 <?php
-/*    Template Name: Dịch vụ
- * The template for displaying Service
+/**
+ * The template part for displaying single posts
  *
  * @package WordPress
- * @subpackage twentysixteen
- * 
+ * @subpackage Twenty_Sixteen
+ * @since Twenty Sixteen 1.0
  */
 $srcImage = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
 $titleHead = get_field('title_header', $post->ID);
 $description = get_field('description', $post->ID);
-?>  
+?>
+
 <div class="container-fluid" id="wrapper">
     <div class="component slider-nav" id="sliderNav">
         <div class="slider-wrapper">
@@ -161,4 +162,3 @@ $description = get_field('description', $post->ID);
     </div>
     <?php get_template_part('template-parts/block/banner-footer', ''); ?>
 </div>
-<?php get_footer(); ?>

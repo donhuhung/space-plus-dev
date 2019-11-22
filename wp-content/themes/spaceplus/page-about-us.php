@@ -10,6 +10,8 @@ get_header();
 $srcImage = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
 $titleHead = get_field('title_header', $post->ID);
 $description = get_field('description', $post->ID);
+$blockDetail = get_field('block_detail',$post->ID);
+print_r($blockDetail);die;
 ?>  
 <div class="container-fluid" id="wrapper">
     <div class="component slider-nav" id="sliderNav">
@@ -35,7 +37,7 @@ $description = get_field('description', $post->ID);
                             </div>
                             <h4><?php echo $titleHead ;?></h4>
                             <p><?php echo $description;?></p>
-                            <button class="loadpage in"><span>Đọc thêm</span></button>
+                            <button class="loadpage"><span>Đọc thêm</span></button>
                         </div>
                     </div>
                 </li>
@@ -72,7 +74,6 @@ $description = get_field('description', $post->ID);
     <div class="component layout negative-margin pnp-bg">
         <div class="content container-fluid">
             <div class="row no-gutter full-width-layout">
-                <div class="col-md-12">
                     <section class="component component-coloured-text lined sixty-thirty lined" style="background-color: #ffffff;" data-txt-colour=#000000 data-bg-colour=#ffffff>
                         <div class="row">
                             <div class="col-md-8 equate">
@@ -94,34 +95,8 @@ $description = get_field('description', $post->ID);
                             </div>
                         </div>
                     </section>
-                </div>
             </div>
             
-            <div class="row no-gutter full-width-layout">
-                <div class="col-md-12">
-                    <section class="component component-coloured-text lined sixty-thirty lined" style="background-color: #ffffff;" data-txt-colour=#000000 data-bg-colour=#ffffff>
-                        <div class="row">
-                            <div class="col-md-8 equate">
-                                <div class="inner no-caption">
-                                    <div class="content">
-                                        <div class="image jpg">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/images/about-3.png" alt="image"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="inner">
-                                    <h2 class="title">Interior Design Studio Philosophy</h2>
-                                    <div class="content">
-                                        <p>Great design should last, rather than follow fashion or trends. Maintaining a creative vision that spans architecture to interiors and bespoke furniture design, our quality of work is defined by a refined and timeless style. Design Matters.</p>
-                                        <p>The creation of space in the context of its environment is at the forefront of our studio ethos. We believe that architecture and design is for people, and as such, great sensitivity is given to understanding how thoughtful design can enhance people’s lives.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
         </div>
     </div>
               
